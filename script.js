@@ -1,49 +1,63 @@
 let choice = ["rock", "paper", "scissor"];
 
-// function to have the computer make a guess
 function getComputerChoice() {
   return choice[Math.floor(Math.random() * choice.length)];
 }
 
+let playerSelection;
+
 let playerScore = 0;
 let computerScore = 0;
 
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissor = document.querySelector(".scissor");
+const result = document.querySelector(".result");
+
+rock.addEventListener("click", () => {
+  playerSelection = rock.className;
+  let computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
+
+paper.addEventListener("click", () => {
+  playerSelection = paper.className;
+  let computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
+
+scissor.addEventListener("click", () => {
+  playerSelection = scissor.className;
+  let computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
+
 function playRound(playerSelection, computerSelection) {
-  let result;
+  let outcome;
   if (playerSelection == computerSelection) {
-    result = "It's a tie!";
+    outcome = "It's a tie!";
   } else if (
     (playerSelection == "scissor" && computerSelection == "paper") ||
     (playerSelection == "paper" && computerSelection == "rock") ||
     (playerSelection == "rock" && computerSelection == "scissor")
   ) {
-    result = "You win!";
+    outcome = "You win!";
     playerScore++;
   } else {
-    result = "You lose!";
+    outcome = "You lose!";
     computerScore++;
   }
-  return result;
-}
+  result.textContent = `${outcome} Your score is: ${playerScore} and Computer's score is: ${computerScore}`;
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("What do you choose?: ").toLowerCase();
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-
-  console.log(
-    `Your score is: ${playerScore} and Computer's score is: ${computerScore}`
-  );
-
-  if (playerScore > computerScore) {
-    console.log("You're the winner!");
-  } else if (computerScore > playerScore) {
-    console.log("You're the loser!");
-  } else {
-    console.log("This game is a tie!");
+  if (playerScore == 5) {
+    result.textContent = "You're the winner!";
+    playerScore = 0;
+    computerScore = 0;
+    return;
+  } else if (computerScore == 5) {
+    result.textContent = "You're the loser!";
+    playerScore = 0;
+    computerScore = 0;
+    return;
   }
 }
-
-game();

@@ -1,0 +1,63 @@
+body {
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.rock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  border: solid black 2px;
+  user-select: none;
+}
+
+.paper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  border: solid black 2px;
+  user-select: none;
+}
+
+.scissor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  border: solid black 2px;
+  user-select: none;
+}
+
+.result {
+  height: 100px;
+  width: 326px;
+  border: solid black 2px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
